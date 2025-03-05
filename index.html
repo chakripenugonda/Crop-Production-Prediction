@@ -1,0 +1,208 @@
+<html>
+<head><title>Crop Production Prediction</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            margin:0;
+            padding:0;
+            font-family: calibri;
+            background: linear-gradient(-45deg,#EE7752,#E73C7E,#23A6D4,#23D5BE,#228B22);
+            background-size: 400% 400%;
+            position:relative;
+            width:100%;
+            height: 100vh;
+            animation: change 10s ease-in-out infinite;
+        }
+        .header
+            {
+                -webkit-background-size: cover;
+                background-size: cover;
+                background-position:center center;
+                height:100vh;
+                position: :fixed;
+                left:0;
+                right:0;
+                z-index:-1;
+                filter: blur(1px);
+                -webkit-filter:blur(2px);
+            }
+        .header-title
+            {
+                z-index:2;
+                top:15%;
+                left:20%;
+                position: absolute;
+            }
+        .header-title h2{
+                color:white;
+                font-size: 5em;
+                font-family: calibri;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+            }
+        span{
+            color:OrangeRed;
+            font-family: 'Kaushan Script', cursive;
+        }
+        .span-back{
+            background:rgb(0,0,0,0.5);
+            top:28%;
+            left:19%;
+            width:84px;
+            height:14rem;
+            position: absolute;
+            border-radius:4px; 
+        }
+        .header-cap{
+            z-index:2;
+            position:absolute;
+            top:67%;
+            left:18%;
+            
+        }
+        .header-cap p{
+            color:#fff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: "Lato",Arial,sans-serif;
+            border:1px solid #fff;
+            padding:2px 2px;
+            position: relative;
+        }
+        .cap{
+            z-index:2;
+            position:absolute;
+            top:90%;
+            left:1%;
+        }
+        .sp{
+            z-index:2;
+            position:absolute;
+            top:90%;
+            left:24%;
+        }
+        .sp p{
+            color:#fff;
+            font-family: 'Kaushan Script', cursive;
+        }
+        .field{
+            background:rgb(0,0,0,0.5);
+            color:white;
+            top:2%;
+            left:60%;
+            padding:30px 20px;
+            position: absolute;
+            border-radius:4px; 
+        }
+        .field form table input{
+            width:400px;
+            height:43px;
+            border:none;
+            border-radius:2px;
+            font-family: sans-serif;
+            padding-left: 5px;
+            background-color: white;
+        }
+        .field form table select{
+            width:400px;
+            height:43px;
+            border:none;
+            border-radius:2px;
+            font-family: sans-serif;
+            padding-left: 5px;
+            background-color: white;
+        }
+        .field form table select option{
+            background:rgb(0,0,0,0.1);
+            font-family: sans-serif;
+            -webkit-background-size: cover;
+            background-size: cover;
+            
+        }
+        .field form table input:hover{
+            color:black;
+            border:none;
+            border-bottom: 4px solid yellowgreen;
+        }
+        .field form table select:hover{
+            color:black;
+            border:none;
+            border-bottom: 4px solid yellowgreen;
+        }
+        .field form table input[type="submit"]
+        {
+            background-color:rgb(0,0,0,0.7);
+            color:white;
+            font-size:18px; 
+            font-family:sans-serif;
+            border-bottom: none;
+            letter-spacing: 2px;
+        }
+        .field form table input[type="submit"]:hover{
+            background-color:rgb(0,0,0,0.5);
+            color:white;
+            cursor: pointer;
+        }
+        .field form table input[type="submit"]:active{
+            background-color:rgb(0,0,0,0.2);
+            cursor: pointer;
+        }
+        .pred{
+            color:white;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        @keyframes change{
+            0%{
+                background-position: 0 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            100%{
+                background-position: 0 50%;
+            }
+        }
+    </style>
+    </head>
+<body>
+    <div class="header"></div>
+    <div class="header-title">
+        <h2><span>j  </span> ai<br><span>k </span> isan</h2>
+    </div>
+    <div class="header-cap">
+        <p>crop production prediction</p>
+    </div>
+    <div class="cap">
+        <p>Made with Love for the people who respects</p>
+    </div>
+    <div class="sp"><p>FARMER</p></div>
+    <div class="span-back"></div>
+    <div class="field">
+        <form action="{{ url_for('predict')}}" method="post">
+            <table align="center" cellspacing=20>
+                <tr><td><select name="state_name" placeholder="State name" id="state" required="requried">
+                    <option value="">--State Name--</option><option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option><option value="Andhra Pradesh">Andhra Pradesh</option><option value="Arunachal Pradesh">Arunachal Pradesh</option><option value="Assam">Assam</option><option value="Bihar">Bihar</option><option value="Chandigarh">Chandigarh</option><option value="Chhattisgarh">Chhattisgarh</option><option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option><option value="Goa">Goa</option><option value="Gujarat">Gujarat</option><option value="Haryana">Haryana</option><option value="Himachal Pradesh">Himachal Pradesh</option><option value="Jammu and Kashmir">Jammu and Kashmir</option><option value="Jharkhand">Jharkhand</option><option value="Karnataka">Karnataka</option><option value="Kerala">Kerala</option><option value="Madhya Pradesh">Madhya Pradesh</option><option value="Maharashtra">Maharashtra</option><option value="Manipur">Manipur</option><option value="Meghalaya">Meghalaya</option><option value="Mizoram">Mizoram</option><option value="Nagaland">Nagaland</option><option value="Odisha">Odisha</option><option value="Puducherry">Puducherry</option><option value="Punjab">Punjab</option><option value="Rajasthan">Rajasthan</option><option value="Sikkim">Sikkim</option><option value="Tamil Nadu">Tamil Nadu</option><option value="Telangana">Telangana</option><option value="Tripura">Tripura</option><option value="Uttar Pradesh">Uttar Pradesh</option><option value="Uttarakhand">Uttarakhand</option><option value="West Bengal">West Bengal</option>
+                    </select></td>
+                </tr>
+                <tr><td><input type="text" name="district" placeholder="District Name" id="t3" required></td>
+                </tr>
+                <tr><td><input type="text" name="year" placeholder="Crop Year" id="t3" required></td></tr>
+                <tr><td><select name="season" placeholder="Season" id="t4" required>
+                    <option value="">--Season--</option>
+                    <option value="Rabi">Rabi</option>
+                    <option value="Whole Year">Whole Year</option><option value="Autumn">Autumn</option><option value="Winter">Winter</option><option value="Summer">Summer</option><option value="Kharif">Kharif</option></select></td>
+                </tr>
+                <tr><td><select name="crop" placeholder="Crop" id="t5" required>
+                    <option value="">--Crop--</option><option value='Arecanut'>Arecanut</option><option value='Other Kharif pulses'>Other Kharif pulses</option><option value='Rice'>Rice</option><option value='Banana'>Banana</option><option value='Cashewnut'>Cashewnut</option><option value='Coconut'>Coconut</option><option value='Dry ginger'>Dry ginger</option><option value='Sugarcane'>Sugarcane</option><option value='Sweet potato'>Sweet potato</option><option value='Tapioca'>Tapioca</option><option value='Black pepper'>Black pepper</option><option value='Dry chillies'>Dry chillies</option><option value='other oilseeds'>other oilseeds</option><option value='Turmeric'>Turmeric</option><option value='Maize'>Maize</option><option value='Moong(Green Gram)'>Moong(Green Gram)</option><option value='Urad'>Urad</option><option value='Arhar/Tur'>Arhar/Tur</option><option value='Groundnut'>Groundnut</option><option value='Sunflower'>Sunflower</option><option value='Bajra'>Bajra</option><option value='Castor seed'>Castor seed</option><option value='Cotton(lint)'>Cotton(lint)</option><option value= 'Horse-gram'>Horse-gram</option><option value='Jowar'>Jowar</option><option value='Korra'>Korra</option><option value='Ragi'>Ragi<option value= 'Tobacco'>Tobacco</option><option value='Gram'>Gram</option><option value= 'Wheat'>Wheat</option><option value='Masoor'>Masoor</option><option value='Sesamum'>Sesamum</option><option value='Linseed'>Linseed</option><option value= 'Safflower'>Safflower</option><option value='Onion'>Onion</option><option value='other misc. pulses'>other misc. pulses</option><option value='Samai'>Samai</option><option value='Small millets'>Small millets</option><option value= 'Coriander'>Coriander</option><option value='Potato'>Potato</option><option value='Other  Rabi pulses'>Other  Rabi pulses</option><option value= 'Soyabean'>Soyabean</option><option value='Beans & Mutter(Vegetable)'>Beans & Mutter(Vegetable)</option><option value='Bhindi'>Bhindi</option><option value= 'Brinjal'>Brinjal</option><option value='Citrus Fruit'>Citrus Fruit</option><option value= 'Cucumber'>Cucumber</option><option value= 'Grapes'>Grapes</option><option value='Mango'>Mango</option><option value='Orange'>Orange</option><option value='other fibres'>other fibres</option><option value='Other Fresh Fruits'>Other Fresh Fruits</option><option value= 'Other Vegetables'>Other Vegetables</option><option value= 'Papaya'>Papaya</option><option value= 'Pome Fruit'>Pome Fruit</option><option value= 'Tomato'>Tomato</option><option value= 'Mesta'>Mesta</option><option value= 'Cowpea(Lobia)'>Cowpea(Lobia)</option><option value= 'Lemon'>Lemon</option><option value= 'Pome Granet'>Pome Granet</option><option value= 'Sapota'>Sapota</option><option value= 'Cabbage'>Cabbage</option><option value= 'Rapeseed &Mustard'>Rapeseed &Mustard</option><option value= 'Peas  (vegetable)'>Peas  (vegetable)</option><option value= 'Niger seed'>Niger seed</option><option value= 'Bottle Gourd'>Bottle Gourd</option><option value= 'Varagu'>Varagu</option><option value= 'Garlic'>Garlic</option><option value= 'Ginger'>Ginger</option><option value= 'Oilseeds total'>Oilseeds total</option><option value= 'Pulses total'>Pulses total</option><option value= 'Jute'>Jute</option><option value= 'Peas & beans (Pulses)'>Peas & beans (Pulses)</option><option value= 'Blackgram'>Blackgram</option><option value= 'Paddy'>Paddy</option><option value= 'Pineapple'>Pineapple</option><option value= 'Barley'>Barley</option><option value= 'Sannhamp'>Sannhamp</option><option value= 'Khesari'>Khesari</option><option value= 'Guar seed'>Guar seed</option><option value= 'Moth'>Moth</option><option value= 'Other Cereals & Millets'>Other Cereals & Millets</option><option value= 'Cond-spcs other'>Cond-spcs other</option><option value= 'Turnip'>Turnip</option><option value= 'Carrot'>Carrot</option><option value= 'Redish'>Redish</option><option value= 'Arcanut (Processed)'>Arcanut (Processed)</option><option value= 'Atcanut (Raw)'>Atcanut (Raw)</option><option value= 'Cashewnut Processed'>Cashewnut Processed</option><option value='Cashewnut Raw'>Cashewnut Raw</option><option value='Cardamom'>Cardamom</option><option value= 'Rubber'>Rubber</option><option value= 'Bitter Gourd'>Bitter Gourd</option><option value= 'Drum Stick'>Drum Stick</option><option value= 'Jack Fruit'>Jack Fruit</option><option value= 'Snak Guard'>Snak Guard</option><option value= 'Tea'>Tea</option><option value= 'Coffee'>Coffee</option><option value= 'Cauliflower'>Cauliflower</option><option value= 'Other Citrus Fruit'>Other Citrus Fruit</option><option value= 'Water Melon'>Water Melon</option><option value='Total foodgrain'>Total foodgrain</option><option value= 'Kapas'>Kapas</option><option value= 'Colocosia'>Colocosia</option><option value= 'Lentil'>Lentil</option><option value= 'Bean'>Bean</option><option value= 'Jobster'>Jobster</option><option value= 'Perilla'>Perilla</option><option value= 'Rajmash Kholar'>Rajmash Kholar</option><option value= 'Ricebean (nagadal)'>Ricebean (nagadal)</option><option value= 'Ash Gourd'>Ash Gourd</option><option value= 'Beet Root'>Beet Root</option><option value= 'Lab-Lab'>Lab-Lab</option><option value= 'Ribed Guard'>Ribed Guard</option><option value= 'Yam'>Yam</option><option value= 'Pump Kin'>Pump Kin</option><option value= 'Apple'>Apple</option><option value= 'Peach'>Peach</option><option value='Pear'>Pear</option><option value= 'Plums'>Plums</option><option value= 'Litchi'>Litchi</option><option value= 'Ber'>Ber</option><option value= 'Other Dry Fruit'>Other Dry Fruit</option><option value= 'Jute & mesta'>Jute & mesta</option>})</select></td>
+                </tr>
+                <tr><td><input type="text" name="area" placeholder="Area(in Hectors)" id="t6" required></td></tr>
+                <span><tr><td><input type="submit" id="btn" value="PREDICT" ></td></tr></span>
+            </table> 
+        </form>
+        <div class="pred">{{ prediction_text }}</div>
+    </div>
+    </body>
+</html>
